@@ -1,8 +1,8 @@
 import glob
 import os
 
-# This function organizes the files in a list
-#def organize(inputObj) -> list:
+# This function corrects the filepaths for use in Python.
+# Usage is mainly due to Windows using backslashes.
 
 def correctPath(dli):
     returnlist = []
@@ -13,7 +13,10 @@ def correctPath(dli):
     return returnlist
 
 
-# This function just gets all of the files based on the given directory as a string
+# This function just gets all of the files based
+# on the given directory as a string. Returns a 
+# list of all files with their respective paths.
+
 def get_files(file_dir):
     dirlist = []
     for name in glob.glob(file_dir + "/*"):
