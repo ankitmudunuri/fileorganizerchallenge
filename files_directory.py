@@ -1,0 +1,34 @@
+import glob
+import os
+
+# This function organizes the files in a list
+#def organize(inputObj) -> list:
+
+def correctPath(dli):
+    returnlist = []
+    for x in dli:
+        newstr = x.replace("\\", "/")
+        returnlist.append(newstr)
+
+    return returnlist
+
+
+# This function just gets all of the files based on the given directory as a string
+def get_files(file_dir):
+    dirlist = []
+    for name in glob.glob(file_dir + "/*"):
+        dirlist.append(name)
+        
+    dirlist = correctPath(dirlist)
+
+    file_list = []
+
+    for paths in dirlist:
+        if (os.path.isdir(paths)):
+            new_list = get_files(paths)
+            file_list = file_list + new_list
+        else:
+            file_list.append(paths)
+
+    return file_list
+
